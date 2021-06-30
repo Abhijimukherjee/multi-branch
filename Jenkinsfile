@@ -21,7 +21,7 @@ pipeline {
     stages {
         stage('Build') {
             def JOB_CONFIG=getJobConfigFromJobMetadata(JOB_NAME);
-            def jobConfObjType = JOB_CONFIG['params.object.type']
+            def jobConfObjType = JOB_CONFIG['params.object.type'];
             when {
             // case insensitive regular expression for truthy values
             expression { return ${jobConfObjType} == 'Pricing' }
