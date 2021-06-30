@@ -23,7 +23,7 @@ pipeline {
       stage('Build') {
             when {
             // case insensitive regular expression for truthy values
-            expression { return env.jobConfObjType == 'Pricing' }
+            expression { return env.jobConfObjType = 'Pricing' }
           }
             steps {
                 echo 'this should come only if job name is pricing'
