@@ -14,14 +14,13 @@ def getJobConfigFromJobMetadata(jobName) {
 
   return jobConfig;
 }
-
+def JOB_CONFIG=getJobConfigFromJobMetadata(JOB_NAME);
+def jobConfObjType = JOB_CONFIG['params.object.type'];
 pipeline {
     agent any
     
     stages {
-        stage('Build') {
-            def JOB_CONFIG=getJobConfigFromJobMetadata(JOB_NAME);
-            def jobConfObjType = JOB_CONFIG['params.object.type'];
+      stage('Build') {
             when {
             // case insensitive regular expression for truthy values
             expression { return ${jobConfObjType} == 'Pricing' }
