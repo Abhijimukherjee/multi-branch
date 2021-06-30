@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             when {
             // case insensitive regular expression for truthy values
-            expression { return env.JOB_NAME == "Pricing" }
+            expression { return ${JOB_NAME} == 'Pricing' }
           }
             steps {
                 echo 'this should come only if job name is pricing'
