@@ -3,12 +3,14 @@ pipeline {
     
     stages {
       stage('Build') {
-            if(jobName ==~ /(.*)Pricing(.*)/ ){
-            // case insensitive regular expression for truthy values
-            // expression { return env.jobConfObjType = 'Pricing' 
+            when {
+        expression {
+            return env.BRANCH_NAME != 'feature1';
+                    }
+                 } 
             steps {
                 echo 'this should come only if job name is pricing'
-            }}
+            }
         }
         stage('Test') {
             steps {
