@@ -1,10 +1,14 @@
 pipeline {
     agent any
-
+    
     stages {
         stage('Build') {
+            when {
+            // case insensitive regular expression for truthy values
+            expression { return env.JOB_NAME == "Pricing" }
+          }
             steps {
-                echo 'Building..'
+                echo 'this should come only if job name is pricing'
             }
         }
         stage('Test') {
