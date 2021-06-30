@@ -6,7 +6,7 @@ pipeline {
             when {
             // case insensitive regular expression for truthy values
             // expression { return env.jobConfObjType = 'Pricing' }
-              JOB_NAME Pricing
+              env.JOB_NAME == 'Pricing'
           }
             steps {
                 echo 'this should come only if job name is pricing'
