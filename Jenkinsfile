@@ -7,7 +7,7 @@ pipeline {
             // case insensitive regular expression for truthy values
             // expression { return env.jobConfObjType = 'Pricing' }
             expression {
-              env.JOB_NAME == 'Pricin'
+              return env.JOB_NAME == 'Pricing'
           }
                 }
             steps {
