@@ -15,7 +15,11 @@ pipeline {
         }
         
         stage("Pricing") {
-            when { expression { ENV_NAME == true } }
+            when { 
+                    expression { 
+                                return env.ENV_NAME ;
+                              }
+                 }
             {
             steps {
                 echo 'testing pricing'
