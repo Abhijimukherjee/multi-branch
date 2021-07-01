@@ -1,8 +1,8 @@
 
-// THEJOB="${JOB_NAME.substring(JOB_NAME.lastIndexOf('/') + 1, JOB_NAME.length())}"
-// echo "$THEJOB"
+ THEJOB="${JOB_NAME.substring(JOB_NAME.lastIndexOf('/') + 1, JOB_NAME.length())}"
+ echo "$THEJOB"
 
-
+// return ['ITEM_NAME': currentJob.getName()]
 
 pipeline {
     agent any
@@ -17,7 +17,7 @@ pipeline {
         stage ('Speak') {
             when {
                 // Only say hello if a "greeting" is requested
-                expression { return ['ITEM_NAME': currentJob.getName()] }
+                expression { $THEJOB = Pricing }
             }
             steps {
                 echo "Hello, bitwiseman!"
