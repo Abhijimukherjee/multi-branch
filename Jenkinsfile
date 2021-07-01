@@ -6,7 +6,7 @@
 
 String getDisplayName(currentBuild) {
     def project = currentBuild.rawBuild.project
-
+}
 pipeline {
     agent any
     parameters {
