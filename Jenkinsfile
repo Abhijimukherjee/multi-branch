@@ -6,7 +6,9 @@ pipeline {
     agent any
     
     parameters {
+        if (env.JOB_NAME == 'Pricing') {
         booleanParam(name: "RELEASE", defaultValue: true)
+        }
     }
     
     stages {
