@@ -19,10 +19,12 @@ pipeline {
         }
         
         stage("Publish") {
-            when { BRANCH_NAME = 'feature1' }
+            when (BRANCH_NAME = 'feature1')
+            {
             steps {
                 echo 'testing publish'
             }
+            }    
         }
     }
 }
