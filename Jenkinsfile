@@ -17,7 +17,7 @@ pipeline {
         stage("Pricing") {
             when { 
                     expression { 
-                                return env.ENV_NAME ;
+                                return env.ENV_NAME == true ;
                               }
                  }
             {
