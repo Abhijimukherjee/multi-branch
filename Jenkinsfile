@@ -5,7 +5,7 @@ pipeline {
       stage('Build') {
             when {
         expression {
-            return env.BRANCH_NAME != 'feature1';
+            return env.BRANCH_NAME = 'feature1';
                     }
                  } 
             steps {
