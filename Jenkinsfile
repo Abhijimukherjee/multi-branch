@@ -16,9 +16,7 @@ pipeline {
         
         stage("Pricing") {
             when { 
-                    expression { 
-                                return env.ENV_NAME == true ;
-                              }
+                    branch 'branch1'
                  }
             {
             steps {
