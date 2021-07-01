@@ -51,5 +51,3 @@ def getJobConfigFromJobMetadata(jobName) {
 
   return jobConfig;
 }
-}
-
