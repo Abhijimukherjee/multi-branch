@@ -1,6 +1,8 @@
 
-THEJOB="${JOB_NAME.substring(JOB_NAME.lastIndexOf('/') + 1, JOB_NAME.length())}"
-echo "$THEJOB"
+// THEJOB="${JOB_NAME.substring(JOB_NAME.lastIndexOf('/') + 1, JOB_NAME.length())}"
+// echo "$THEJOB"
+
+return ['ITEM_NAME': currentJob.getName()]
 
 pipeline {
     agent any
