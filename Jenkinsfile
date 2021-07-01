@@ -1,25 +1,26 @@
+#!/usr/bin/env groovy
+// see https://jenkins.io/doc/book/pipeline/syntax/
+
 pipeline {
+    
     agent any
     
+    parameters {
+        booleanParam(name: "RELEASE", defaultValue: false)
+    }
+    
     stages {
-      stage('Build') {
-            when {
-        expression {
-            return env.BRANCH_NAME = 'feature1';
-                    }
-                 } 
+
+        stage("Build") {
             steps {
-                echo 'this should come only if job name is pricing'
+                echo 'testing build'
             }
         }
-        stage('Test') {
+        
+        stage("Publish") {
+            when { expression { params.RELEASE } }
             steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
+                echo 'testing publish'
             }
         }
     }
