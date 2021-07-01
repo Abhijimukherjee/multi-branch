@@ -17,7 +17,7 @@ pipeline {
         stage ('Speak') {
             when {
                 // Only say hello if a "greeting" is requested
-                expression { $THEJOB = Pricing }
+                expression { $THEJOB = 'Pricing' }
             }
             steps {
                 echo "Hello, bitwiseman!"
