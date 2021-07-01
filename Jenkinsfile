@@ -17,14 +17,13 @@ pipeline {
     }
 
     stages {
-            // for multibranch pipelines
-    if (project.parent instanceof WorkflowMultiBranchProject) {
+        // for multibranch pipelines
+		if (project.parent instanceof WorkflowMultiBranchProject) {
         return "${project.parent.displayName} (${project.displayName})"
-    } else {
+		} else {
         // for all other projects
         return project.displayName
-    }
-}
+		}
         stage ('Speak') {
             when {
                 // Only say hello if a "greeting" is requested
