@@ -19,7 +19,7 @@ pipeline {
         }
         
         stage("Publish") {
-            when (branch = 'feature1')
+            when (environment.BRANCH_NAME = 'feature1')
             {
             steps {
                 echo 'testing publish'
