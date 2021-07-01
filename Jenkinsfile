@@ -1,21 +1,40 @@
-pipeline {
-    agent any
+#!/usr/bin/env groovy
+// see https://jenkins.io/doc/book/pipeline/syntax/
 
-    stages {
-        stage('Build') {
+pipeline {
+        agent any
+        environment {
+           ENV_NAME = getEnvName(env.JOB_NAME)
+        }
+        stages {
+
+        stage("Build") {
             steps {
-                echo 'Building..'
+                echo 'testing build'
             }
         }
-        stage('Test') {
+        
+        stage("Pricing") {
+            when { 
+                    expression { 
+                                return env.ENV_NAME == true ;
+                              }
+                 }
+            {
             steps {
-                echo 'Testing..'
+                echo 'testing pricing'
             }
+            }    
         }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
+    }
+    }
+
+def getEnvName(jobname) {
+    if("Pricing".equals(jobname)) {
+        return "true";
+    } else if ("Product".equals(jobname)) {
+        return "false";
+    } else {
+        return "false";
     }
 }
