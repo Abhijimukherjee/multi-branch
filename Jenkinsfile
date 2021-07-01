@@ -5,11 +5,10 @@ pipeline {
     
     agent any
     
-    parameters {
-        if (env.JOB_NAME == 'Pricing') {
-        booleanParam(name: "RELEASE", defaultValue: true)
-        }
-    }
+//    parameters {
+        
+//        booleanParam(name: "RELEASE", defaultValue: true)
+//    }
     
     stages {
 
@@ -20,7 +19,7 @@ pipeline {
         }
         
         stage("Publish") {
-            when { expression { params.RELEASE } }
+            when { BRANCH_NAME = 'feature1' }
             steps {
                 echo 'testing publish'
             }
