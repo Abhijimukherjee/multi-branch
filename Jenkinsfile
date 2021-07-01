@@ -1,8 +1,5 @@
-
-def allJob = env.JOB_NAME.tokenize('/') as String[];
-def projectName = allJob[0];
-
-echo "projectName"
+THEJOB="${JOB_NAME.substring(JOB_NAME.lastIndexOf('/') + 1, JOB_NAME.length())}"
+echo "$THEJOB"
 
 pipeline {
     agent any
@@ -42,5 +39,4 @@ def getJobConfigFromJobMetadata(jobName) {
   return jobConfig;
 }
 
-THEJOB="${JOB_NAME.substring(JOB_NAME.lastIndexOf('/') + 1, JOB_NAME.length())}"
-echo "$THEJOB"
+
