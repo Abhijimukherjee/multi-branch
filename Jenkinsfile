@@ -25,8 +25,6 @@ pipeline {
     }
     }
 
-...
-
 def getEnvName(jobname) {
     if("Pricing".equals(jobname)) {
         return "true";
@@ -35,16 +33,4 @@ def getEnvName(jobname) {
     } else {
         return "false";
     }
-}
-
-pipeline {
-    
-    agent any
-    
-//    parameters {
-        
-//        booleanParam(name: "RELEASE", defaultValue: true)
-//    }
-    
-    
 }
