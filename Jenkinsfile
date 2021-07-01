@@ -1,3 +1,9 @@
+
+def allJob = env.JOB_NAME.tokenize('/') as String[];
+def projectName = allJob[0];
+
+echo "projectName"
+
 pipeline {
     agent any
     parameters {
