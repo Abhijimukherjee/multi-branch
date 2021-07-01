@@ -19,3 +19,21 @@ pipeline {
         }
     }
 }
+def getJobConfigFromJobMetadata(jobName) {
+  def jobConfig = [:];
+
+  if(jobName ==~ /(.*)(Product|product)(.*)/ ){
+    jobConfig['params.object.type']="Product"
+  }else if(jobName ==~ /(.*)(Color|color)(.*)/ ){
+    jobConfig['params.object.type']="Color"
+  }else if(jobName ==~ /(.*)(Pricing|pricing)(.*)/ ){
+    jobConfig['params.object.type']="Pricing"
+  }else{
+    jobConfig['params.object.type'] = "TYPE NOT RECOGNIZED!"
+    throw new Exception("unable to detect job config from ${jobName}")
+  }
+
+  return jobConfig;
+}
+
+echo 'JOB_NAME'
