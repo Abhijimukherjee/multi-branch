@@ -36,4 +36,4 @@ def getJobConfigFromJobMetadata(jobName) {
   return jobConfig;
 }
 
-echo 'JOB_NAME'
+echo 'env.JOB_NAME'
