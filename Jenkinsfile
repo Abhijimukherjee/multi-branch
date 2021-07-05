@@ -30,6 +30,7 @@ pipeline {
                 expression { params.REQUESTED_ACTION == 'Product' }
             }
             steps {
+		env.JOB_BASE_NAME
                 echo "Hello, bitwiseman!"
             }
         }
