@@ -20,8 +20,8 @@ pipeline {
         stage ('Speak') {
             when {
      		expression {
-         	env.JOB_NAME == 'Pricing'
-			echo "projectName"
+         	env.JOB_NAME == 'Pricing/branch1'
+			echo "{$env.JOB_NAME}"
      		}
                 // Only say hello if a "greeting" is requested
                // expression { params.REQUESTED_ACTION == 'Product' }
