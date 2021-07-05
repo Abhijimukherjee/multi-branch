@@ -1,8 +1,11 @@
 
- THEJOB="${JOB_NAME.substring(JOB_NAME.lastIndexOf('/') + 1, JOB_NAME.length())}"
- echo "$THEJOB"
+// THEJOB="${JOB_NAME.substring(JOB_NAME.lastIndexOf('/') + 1, JOB_NAME.length())}"
+// echo "$THEJOB"
 
 // return ['ITEM_NAME': currentJob.getName()]
+
+def allJob = env.JOB_NAME.tokenize('/') as String[];
+def projectName = allJob[0];
 
 pipeline {
     agent any
@@ -16,8 +19,11 @@ pipeline {
     stages {
         stage ('Speak') {
             when {
+     		expression {
+         	env.JOB_NAME == 'Pricing'
+     		}
                 // Only say hello if a "greeting" is requested
-                expression { params.REQUESTED_ACTION == 'Product' }
+               // expression { params.REQUESTED_ACTION == 'Product' }
             }
             steps {
                 echo "Hello, bitwiseman!"
