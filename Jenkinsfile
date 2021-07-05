@@ -28,7 +28,6 @@ pipeline {
             }
         }
     }
-}
 def getJobConfigFromJobMetadata(jobName) {
   def jobConfig = [:];
 
