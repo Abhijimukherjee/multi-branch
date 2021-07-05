@@ -21,7 +21,7 @@ pipeline {
             when {
      		expression {
          	env.JOB_NAME == 'Pricing'
-			echo ${env.JOB_NAME}
+			echo "{$env.JOB_NAME}"
      		}
                 // Only say hello if a "greeting" is requested
                // expression { params.REQUESTED_ACTION == 'Product' }
