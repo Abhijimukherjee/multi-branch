@@ -1,11 +1,9 @@
 
-// THEJOB="${JOB_NAME.substring(JOB_NAME.lastIndexOf('/') + 1, JOB_NAME.length())}"
-// echo "$THEJOB"
+ THEJOB="${JOB_NAME.substring(JOB_NAME.lastIndexOf('/') + 1, JOB_NAME.length())}"
+ echo "$THEJOB"
 
 // return ['ITEM_NAME': currentJob.getName()]
 
-String getDisplayName(currentBuild) {
-    def project = currentBuild.rawBuild.project
 }
 pipeline {
     agent any
@@ -17,10 +15,6 @@ pipeline {
     }
 
     stages {
-        // for multibranch pipelines
-		if (project.parent instanceof WorkflowMultiBranchProject) {
-        return "${project.parent.displayName} (${project.displayName})"
-		} else {
         // for all other projects
         return project.displayName
 		}
