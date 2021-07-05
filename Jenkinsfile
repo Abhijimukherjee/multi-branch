@@ -4,7 +4,6 @@
 
 // return ['ITEM_NAME': currentJob.getName()]
 
-}
 pipeline {
     agent any
     parameters {
