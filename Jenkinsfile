@@ -18,7 +18,7 @@ pipeline {
 
     stages {
 	 when {
-	 expression { "${env.JOB_NAME}" == 'Pricing/branch1' }
+	 expression { "${env.JOB_NAME}" !== 'Pricing/branch1' }
          stage ('Speak') {
 		// echo "$env.JOB_NAME"
                 // Only say hello if a "greeting" is requested
