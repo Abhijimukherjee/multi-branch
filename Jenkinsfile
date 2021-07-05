@@ -4,7 +4,7 @@
 
 // return ['ITEM_NAME': currentJob.getName()]
 
-def allJob = env.JOB_NAME.tokenize('/') as String[];
+def allJob = env.JOB_BAE_NAME.tokenize('/') as String[];
 def projectName = allJob[0];
 
 pipeline {
@@ -21,7 +21,7 @@ pipeline {
             when {
      		expression {
          	env.JOB_NAME == 'Pricing/branch1'
-			echo "$env.JOB_NAME"
+			echo "$env.JOB_BAE_NAME"
      		}
                 // Only say hello if a "greeting" is requested
                // expression { params.REQUESTED_ACTION == 'Product' }
