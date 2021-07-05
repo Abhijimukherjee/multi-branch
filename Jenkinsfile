@@ -14,9 +14,6 @@ pipeline {
     }
 
     stages {
-        // for all other projects
-        return project.displayName
-		}
         stage ('Speak') {
             when {
                 // Only say hello if a "greeting" is requested
@@ -27,7 +24,8 @@ pipeline {
                 echo "Hello, bitwiseman!"
             }
         }
-    }
+	}
+}
 def getJobConfigFromJobMetadata(jobName) {
   def jobConfig = [:];
 
