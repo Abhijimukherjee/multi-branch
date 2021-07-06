@@ -35,7 +35,7 @@ pipeline {
 		echo '$env.JOB_NAME'
 		}
 		else {
-		echo 'this doesn't work'
+		echo 'this doesnot work'
 		}
 		}
 		}
