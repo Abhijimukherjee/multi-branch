@@ -40,7 +40,7 @@ pipeline {
 	stage ('testing') {
 	    steps {
             script {
-		    if( "$projectName" == 'Pricing') {
+		    if( "$projectName" != 'Pricing') {
 		echo 'this is working'
 		}
 		else {
