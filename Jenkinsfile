@@ -39,7 +39,7 @@ pipeline {
 	stage ('testing') {
 	    steps {
             script {
-		if( '$JOB_CONFIG' == 'params.object.type:Pricing'){
+		if( '$JOB_CONFIG' != 'params.object.type:Pricing'){
 		echo 'this is working'
 		}
 		else {
