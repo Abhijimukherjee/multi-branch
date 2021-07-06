@@ -7,6 +7,29 @@
 def allJob = env.JOB_NAME.tokenize('/') as String[];
 def projectName = allJob[0];
 
+pipeline {
+    agent any
+    parameters {
+        choice(
+            choices: ['Pricing' , 'Product'],
+            description: '',
+            name: 'REQUESTED_ACTION')
+    }
+
+    stages {
+        stage ('Speak') {
+            when {
+		    expression { "${env.JOB_NAME}" == 'Pricing/branch1' }
+		// echo "$env.JOB_NAME"
+                // Only say hello if a "greeting" is requested
+               // expression { params.REQUESTED_ACTION == 'Product' }
+            }
+            steps {
+                echo "Hello, bitwiseman!"
+            }
+        }
+	}
+}
 def getJobConfigFromJobMetadata(jobName) {
   def jobConfig = [:];
 
@@ -22,28 +45,4 @@ def getJobConfigFromJobMetadata(jobName) {
   }
 
   return jobConfig;
-}
-
-pipeline {
-    agent any
-    parameters {
-        choice(
-            choices: ['Pricing' , 'Product'],
-            description: '',
-            name: 'REQUESTED_ACTION')
-    }
-
-    stages {
-        stage ('Speak') {
-	  when {
-	  expression { "${env.JOB_NAME}" !== 'Pricing/branch1' }
-	  // echo "$env.JOB_NAME"
-          // Only say hello if a "greeting" is requested
-          // expression { params.REQUESTED_ACTION == 'Product' }
-          }
-          steps {
-               echo "Hello, bitwiseman!"
-            }
-        }
-	}
 }
