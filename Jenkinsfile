@@ -29,6 +29,13 @@ pipeline {
         //want this and anything that modifies to run always so that deltas as well as dataloads compute correctly
         stage ('underspeak') {
           steps {
+			sh """
+			if( "$projectName" != 'Pricing') {
+			echo 'not pricing'
+			}else{
+			echo ' pricing'
+			}
+			"""
             //rolls up attributes from child up to parent and marks what kind of children were rolled up
             echo 'this is underspeak'
           }
