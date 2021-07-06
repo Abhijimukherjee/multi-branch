@@ -35,7 +35,7 @@ pipeline {
 		echo 'this is working'
 		}
 		else {
-		echo '$projectName'
+		echo 'env.allJob'
 		}
 		}
 		}
