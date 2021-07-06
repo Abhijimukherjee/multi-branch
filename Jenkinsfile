@@ -17,9 +17,13 @@ pipeline {
     }
 
     stages {
+	    stage ('configure') {
+		    def JOB_CONFIG=getJobConfigFromJobMetadata(JOB_NAME);
+		    echo "job.config: ${JOB_CONFIG}"
+	    }
         stage ('Speak') {
             when {
-		expression { "${env.JOB_NAME}" == 'Pricing/branch1' }
+		expression { "${env.JOB_NAME}" != 'Pricing/branch1' }
 		// echo "$env.JOB_NAME"
                 // Only say hello if a "greeting" is requested
                // expression { params.REQUESTED_ACTION == 'Product' }
@@ -35,7 +39,7 @@ pipeline {
 		echo 'this is working'
 		}
 		else {
-			echo '${env.projectName}'
+			echo 'this is not working'
 		}
 		}
 		}
@@ -58,5 +62,3 @@ def getJobConfigFromJobMetadata(jobName) {
 
   return jobConfig;
 }
-
-def JOB_CONFIG=getJobConfigFromJobMetadata(JOB_NAME);
