@@ -45,7 +45,7 @@ pipeline {
                 echo "Hello, bitwiseman!"
             }
         }
-		stage {
+		stage (checking if)  {
 			if(jobName ==~ /(.*)(Product|product|Color|color)(.*)/ ){
             steps {
                 echo "Hello, bitwiseman!"
