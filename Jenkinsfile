@@ -23,7 +23,7 @@ pipeline {
 	    }
         stage('speak') {
         when {
-		expression { "${projectName}" != 'Pricing' }
+		expression { "${projectName}" == 'Pricing' }
         }
     parallel {
         //want this and anything that modifies to run always so that deltas as well as dataloads compute correctly
