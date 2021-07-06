@@ -4,8 +4,8 @@
 
 // return ['ITEM_NAME': currentJob.getName()]
 
-def allJob = env.JOB_NAME.tokenize('/') as String[];
-def projectName = allJob[0];
+//def allJob = env.JOB_NAME.tokenize('/') as String[];
+//def projectName = allJob[0];
 
 pipeline {
     agent any
