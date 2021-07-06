@@ -7,6 +7,23 @@
 def allJob = env.JOB_NAME.tokenize('/') as String[];
 def projectName = allJob[0];
 
+def getJobConfigFromJobMetadata(jobName) {
+  def jobConfig = [:];
+
+  if(jobName ==~ /(.*)(Product|product)(.*)/ ){
+    jobConfig['params.object.type']="Product"
+  }else if(jobName ==~ /(.*)(Color|color)(.*)/ ){
+    jobConfig['params.object.type']="Color"
+  }else if(jobName ==~ /(.*)(Pricing|pricing)(.*)/ ){
+    jobConfig['params.object.type']="Pricing"
+  }else{
+    jobConfig['params.object.type'] = "TYPE NOT RECOGNIZED!"
+    throw new Exception("unable to detect job config from ${jobName}")
+  }
+
+  return jobConfig;
+}
+
 pipeline {
     agent any
     parameters {
@@ -28,21 +45,12 @@ pipeline {
                 echo "Hello, bitwiseman!"
             }
         }
+		stage {
+			if(jobName ==~ /(.*)(Product|product|Color|color)(.*)/ ){
+            steps {
+                echo "Hello, bitwiseman!"
+            }
+		}
+		}
 	}
-}
-def getJobConfigFromJobMetadata(jobName) {
-  def jobConfig = [:];
-
-  if(jobName ==~ /(.*)(Product|product)(.*)/ ){
-    jobConfig['params.object.type']="Product"
-  }else if(jobName ==~ /(.*)(Color|color)(.*)/ ){
-    jobConfig['params.object.type']="Color"
-  }else if(jobName ==~ /(.*)(Pricing|pricing)(.*)/ ){
-    jobConfig['params.object.type']="Pricing"
-  }else{
-    jobConfig['params.object.type'] = "TYPE NOT RECOGNIZED!"
-    throw new Exception("unable to detect job config from ${jobName}")
-  }
-
-  return jobConfig;
 }
