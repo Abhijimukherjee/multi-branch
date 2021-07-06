@@ -22,6 +22,7 @@ pipeline {
         	script {
 		    def JOB_CONFIG=getJobConfigFromJobMetadata(JOB_NAME);
 		    echo "job.config: ${JOB_CONFIG}"
+			echo "${projectName}"
 		}
 		}
 	    }
