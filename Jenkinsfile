@@ -36,12 +36,14 @@ pipeline {
             steps {
 		    echo "Hurreyyy"
             }
+		parallel {
 		stage ('under_speak') {
 	    steps {
             script {
 
 			echo 'this is under speak'
 		
+		}
 		}
 		}
 		}
