@@ -34,12 +34,12 @@ pipeline {
     }
 
     stages {
-	 when {
-	 expression { "${env.JOB_NAME}" !== 'Pricing/branch1' }
-         stage ('Speak') {
-		// echo "$env.JOB_NAME"
-                // Only say hello if a "greeting" is requested
-               // expression { params.REQUESTED_ACTION == 'Product' }
+        stage ('Speak') {
+		 	when {
+			expression { "${env.JOB_NAME}" !== 'Pricing/branch1' }
+			// echo "$env.JOB_NAME"
+            // Only say hello if a "greeting" is requested
+            // expression { params.REQUESTED_ACTION == 'Product' }
             }
             steps {
                 echo "Hello, bitwiseman!"
@@ -50,7 +50,7 @@ pipeline {
             steps {
                 echo "Hello, bitwiseman!"
             }
-		}
+			}
 		}
 	}
 }
