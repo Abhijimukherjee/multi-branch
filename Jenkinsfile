@@ -7,15 +7,10 @@
 def allJob = env.JOB_NAME.tokenize('/') as String[];
 def projectName = allJob[0];
 
+
 pipeline {
     agent any
-    parameters {
-        choice(
-            choices: ['Pricing' , 'Product'],
-            description: '',
-            name: 'REQUESTED_ACTION')
-    }
-
+    
     stages {
 	    stage ('configure') {
       		steps {
@@ -26,28 +21,20 @@ pipeline {
 		}
 		}
 	    }
-        stage ('Speak') {
-            when {
+        stage('speak') {
+        when {
 		expression { "${projectName}" != 'Pricing' }
-		// echo "$env.JOB_NAME"
-                // Only say hello if a "greeting" is requested
-               // expression { params.REQUESTED_ACTION == 'Product' }
-            }
-            steps {
-		    echo "Hurreyyy"
-            }
-		parallel {
-		stage ('under_speak') {
-	    steps {
-            script {
-
-			echo 'this is under speak'
-		
-		}
-		}
-		}
-		}
         }
+    parallel {
+        //want this and anything that modifies to run always so that deltas as well as dataloads compute correctly
+        stage ('underspeak') {
+          steps {
+            //rolls up attributes from child up to parent and marks what kind of children were rolled up
+            echo 'this is underspeak'
+          }
+        }
+      }
+    }
 	stage ('testing') {
 	    steps {
             script {
