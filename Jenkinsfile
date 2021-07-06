@@ -31,8 +31,8 @@ pipeline {
 	stage ('testing') {
 	    steps {
             script {
-		if(jobName ==~ /(.*)(Pricing|pricing)(.*)/ ){
-		echo '$env.JOB_NAME'
+		if(env.JOB_NAME == 'Pricing/branch1'){
+		echo 'this is working'
 		}
 		else {
 		echo 'this doesnot work'
