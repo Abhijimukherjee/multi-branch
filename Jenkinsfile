@@ -39,7 +39,7 @@ pipeline {
 	stage ('testing') {
 	    steps {
             script {
-		    if(jobName ==~ /(.*)(Pricing|pricing)(.*)/ ){
+		    if(jobConfig['params.object.type']="Pricing"){
 		echo 'this is working'
 		}
 		else {
