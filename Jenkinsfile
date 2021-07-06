@@ -19,7 +19,7 @@ pipeline {
     stages {
         stage ('Speak') {
             when {
-		    expression { "${env.JOB_NAME}" != 'Pricing/branch1' }
+		expression { "${env.JOB_NAME}" != 'Pricing/branch1' }
 		// echo "$env.JOB_NAME"
                 // Only say hello if a "greeting" is requested
                // expression { params.REQUESTED_ACTION == 'Product' }
@@ -28,6 +28,18 @@ pipeline {
                 echo "Hello, bitwiseman!"
             }
         }
+	stage ('testing') {
+	    steps {
+            script {
+		if(jobName ==~ /(.*)(Pricing|pricing)(.*)/ ){
+		echo '$env.JOB_NAME'
+		}
+		else {
+		echo 'this doesn't work'
+		}
+		}
+		}
+		}
 	}
 }
 def getJobConfigFromJobMetadata(jobName) {
