@@ -31,7 +31,7 @@ pipeline {
 	stage ('testing') {
 	    steps {
             script {
-		if(env.JOB_NAME != 'Pricing/branch1'){
+		if( ${JOB_CONFIG} == 'params.object.type:Pricing'){
 		echo 'this is working'
 		}
 		else {
@@ -58,3 +58,5 @@ def getJobConfigFromJobMetadata(jobName) {
 
   return jobConfig;
 }
+
+def JOB_CONFIG=getJobConfigFromJobMetadata(JOB_NAME);
