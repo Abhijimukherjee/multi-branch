@@ -18,8 +18,12 @@ pipeline {
 
     stages {
 	    stage ('configure') {
+      		steps {
+        	script {
 		    def JOB_CONFIG=getJobConfigFromJobMetadata(JOB_NAME);
 		    echo "job.config: ${JOB_CONFIG}"
+		}
+		}
 	    }
         stage ('Speak') {
             when {
