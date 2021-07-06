@@ -31,7 +31,7 @@ pipeline {
 	stage ('testing') {
 	    steps {
             script {
-		if(env.JOB_NAME == 'Pricing/branch1'){
+		if(env.JOB_NAME != 'Pricing/branch1'){
 		echo 'this is working'
 		}
 		else {
