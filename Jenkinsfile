@@ -28,19 +28,19 @@ pipeline {
 	    }
         stage ('Speak') {
             when {
-		expression { "${env.JOB_NAME}" == 'Pricing/branch1' }
+		expression { "${projectName}" == 'Pricing' }
 		// echo "$env.JOB_NAME"
                 // Only say hello if a "greeting" is requested
                // expression { params.REQUESTED_ACTION == 'Product' }
             }
             steps {
-		    echo "${env.projectName}"
+		    echo "Hurreyyy"
             }
         }
 	stage ('testing') {
 	    steps {
             script {
-		    if(jobConfig['params.object.type'] == 'Pricing') {
+		    if( ${projectName} == 'Pricing') {
 		echo 'this is working'
 		}
 		else {
