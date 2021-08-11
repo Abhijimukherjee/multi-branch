@@ -25,12 +25,6 @@ pipeline {
 	sh """
 	echo "NUM" > cat test.txt
 	echo $projectName
-	#!/bin/bash
-	if [ $BUILD_NUMBER -gt 999 ]
-	then
-	(printf $BUILD_NUMBER | tail -c 3)
-	else
-	fi
 	sed -i 's%NUM%\${GIT_COMMIT_EMAIL}%' test.txt > tests.txt
         """
 	}
