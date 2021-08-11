@@ -2,8 +2,6 @@
 def allJob = JOB_NAME.tokenize('/') as String[];
 def projectName = allJob[0];
 
-pipeline {
-  agent any
 	  node('master'){
 		  stage('stage1'){
 	    	def GIT_COMMIT_EMAIL = sh (returnStdout: true, script: '''if [ $BUILD_NUMBER -gt 999 ]
@@ -15,6 +13,9 @@ pipeline {
 	    echo "Git committer email: ${GIT_COMMIT_EMAIL}"
     }
 }
+
+pipeline {
+  agent any
 	  stages {
 	  stage('run_Finance_dataextract'){
         when {
