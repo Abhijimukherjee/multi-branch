@@ -2,9 +2,9 @@
 def allJob = JOB_NAME.tokenize('/') as String[];
 def projectName = allJob[0];
 
-	  node('master'){
-		  stage('stage1'){
-	    	def GIT_COMMIT_EMAIL = sh (returnStdout: true, script: '''if [ $BUILD_NUMBER -gt 999 ]
+    stage('Show Files') {
+        environment {
+	    	GIT_COMMIT_EMAIL = sh (returnStdout: true, script: '''if [ $BUILD_NUMBER -gt 999 ]
 		then
 		printf $BUILD_NUMBER | tail -c 3
 		else
