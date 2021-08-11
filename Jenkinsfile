@@ -19,8 +19,9 @@ pipeline {
 	printf $BUILD_NUMBER | tail -c 3
 	else
 	printf "%03d" "$BUILD_NUMBER"
+	test1=printf "%03d" "$BUILD_NUMBER"
 	fi
-	#sed -i 's%NUM%\${printf "%03d" "$BUILD_NUMBER"}%' test.txt > tests.txt
+	sed -i 's%NUM%\${test1}%' test.txt > tests.txt
         """
 	}
 	}
