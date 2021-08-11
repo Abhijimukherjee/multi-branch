@@ -12,11 +12,11 @@ pipeline {
       steps {
 	      script{
 		      GIT_COMMIT_EMAIL = sh (
-        script: 'if [ $BUILD_NUMBER -gt 999 ]
+        script: '''if [ $BUILD_NUMBER -gt 999 ]
 	then
 	(printf $BUILD_NUMBER | tail -c 3)
 	else
-	fi'
+	fi'''
 			      returnStdout: true
     ).trim()
     echo "Git committer email: ${GIT_COMMIT_EMAIL}"
