@@ -26,7 +26,8 @@ pipeline {
 	touch test.txt
 	echo "NUM" > test.txt
 	echo $projectName
-	sed -i 's%NUM%\${GIT_COMMIT_EMAIL}%' test.txt > tests.txt
+	echo "${GIT_COMMIT_EMAIL}"
+	sed -i 's%NUM%${GIT_COMMIT_EMAIL}%' test.txt > tests.txt
         """
 	}
 	}
