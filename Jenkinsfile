@@ -12,6 +12,7 @@ pipeline {
       steps {
 	withCredentials([usernamePassword(credentialsId: WCS_DL_ENCRYPTED_CREDENTIAL_SET, usernameVariable: 'DBUSER', passwordVariable: 'DBPASS_ENCYPT')]) {
 	sh """
+	echo $projectName
 	if [ $BUILD_NUMBER -gt 999 ]
 	then
 	printf $BUILD_NUMBER | tail -c 3 
