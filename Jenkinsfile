@@ -17,7 +17,7 @@ pipeline {
 	printf $BUILD_NUMBER | tail -c 3 
 	else
 	printf "%03d" "$BUILD_NUMBER" 
-	echo "\${printf "%03d" "$BUILD_NUMBER"}"
+	echo "${printf "%03d" "$BUILD_NUMBER"}"
 	echo "NUM" > cat test.txt
 	fi
         """
