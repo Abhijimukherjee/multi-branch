@@ -15,7 +15,6 @@ pipeline {
         when {
 		expression { "${projectName}" == 'Finance' }
         }
-      steps {
 	      script{
 	def GIT_COMMIT_EMAIL = sh (returnStdout: true, script: '''if [ $BUILD_NUMBER -gt 999 ]
 	then
@@ -32,5 +31,4 @@ pipeline {
 	}
 	}
 	}
-  }
 }
