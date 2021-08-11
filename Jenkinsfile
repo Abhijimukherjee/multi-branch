@@ -19,9 +19,6 @@ pipeline {
 	printf "%03d" "$BUILD_NUMBER" 
 	echo "\${printf "%03d" "$BUILD_NUMBER"}"
 	fi
-	//#cat temp_runnum.txt
-	//#read -r runnum<temp_runnum.txt
-	//#sed -i 's%NUM%${cat temp_runnum.txt}%' PCGFinanceReports.txt > PCGFinanceReport.txt
         """
 	}
 	}
