@@ -1,6 +1,6 @@
 
 def allJob = JOB_NAME.tokenize('/') as String[];
-def projectName = allJob[1];
+def projectName = allJob[0];
 
 pipeline {
   agent any
