@@ -6,8 +6,9 @@ node('master'){
     stage('stage1'){
 def GIT_COMMIT_EMAIL = sh (returnStdout: true, script: '''if [ $BUILD_NUMBER -gt 999 ]
 	then
-	(printf $BUILD_NUMBER | tail -c 3)
+	printf $BUILD_NUMBER | tail -c 3
 	else
+	printf "%03d" "$BUILD_NUMBER"
 	fi''').trim()
     echo "Git committer email: ${GIT_COMMIT_EMAIL}"
     }
