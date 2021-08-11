@@ -16,7 +16,8 @@ pipeline {
 	    echo "Git committer email: ${GIT_COMMIT_EMAIL}"
     }
 }
-    stage('run_Finance_dataextract'){
+	  parallel {
+	  stage('run_Finance_dataextract'){
         when {
 		expression { "${projectName}" == 'Finance' }
         }
@@ -29,6 +30,7 @@ pipeline {
 		    sed -i 's%NUM%\${GIT_COMMIT_EMAIL}%' test.txt > tests.txt
 		    """
 	    }
+	  }
     }
   }
 }
