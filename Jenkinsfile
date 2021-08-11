@@ -16,7 +16,7 @@ pipeline {
 	#!/bin/bash
 	if [ $BUILD_NUMBER -gt 999 ]
 	then
-	foo=$(printf $BUILD_NUMBER | tail -c 3)
+	foo=\$(printf $BUILD_NUMBER | tail -c 3)
 	echo "${foo}"
 	else
 	fi
