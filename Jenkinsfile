@@ -10,7 +10,6 @@ pipeline {
 		expression { "${projectName}" == 'Finance' }
         }
       steps {
-	withCredentials([usernamePassword(credentialsId: WCS_DL_ENCRYPTED_CREDENTIAL_SET, usernameVariable: 'DBUSER', passwordVariable: 'DBPASS_ENCYPT')]) {
 	sh """
 	echo $projectName
 	if [ $BUILD_NUMBER -gt 999 ]
@@ -27,5 +26,4 @@ pipeline {
 	}
 	}
 	}
-}
 }
