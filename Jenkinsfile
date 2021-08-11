@@ -14,14 +14,14 @@ pipeline {
 	echo "NUM" > cat test.txt
 	echo $projectName
 	#!/bin/bash
+	n=$BUILD_NUMBER
 	if [ $BUILD_NUMBER -gt 999 ]
 	then
 	printf $BUILD_NUMBER | tail -c 3
 	else
-	printf "%03d" "$BUILD_NUMBER"
-	test1=printf "%03d" "$BUILD_NUMBER"
+	n='printf %03d $n'
 	fi
-	sed -i 's%NUM%\${test1}%' test.txt > tests.txt
+	sed -i 's%NUM%\$n%' test.txt > tests.txt
         """
 	}
 	}
