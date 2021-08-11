@@ -2,6 +2,13 @@
 def allJob = JOB_NAME.tokenize('/') as String[];
 def projectName = allJob[0];
 
+sh "if [ $BUILD_NUMBER -gt 999 ]
+then
+(printf $BUILD_NUMBER | tail -c 3)
+else
+fi > commandResult"
+result = readFile('commandResult').trim()
+
 pipeline {
   agent any
   stages {
@@ -10,15 +17,6 @@ pipeline {
 		expression { "${projectName}" == 'Finance' }
         }
       steps {
-	script {
-		GIT_COMMIT_EMAIL = sh (
-        script: 'if [ $BUILD_NUMBER -gt 999 ]
-	then
-	(printf $BUILD_NUMBER | tail -c 3)
-	else
-	fi'
-    echo "Git committer email: ${GIT_COMMIT_EMAIL}"
-}
 	sh """
 	echo "NUM" > cat test.txt
 	echo $projectName
