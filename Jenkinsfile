@@ -17,6 +17,7 @@ pipeline {
 	(printf $BUILD_NUMBER | tail -c 3)
 	else
 	fi'
+			      returnStdout: true
     ).trim()
     echo "Git committer email: ${GIT_COMMIT_EMAIL}"
 	      }
