@@ -19,7 +19,7 @@ pipeline {
 	then
 	printf $BUILD_NUMBER | tail -c 3
 	else
-	n='printf %03d $n'
+	set n='printf %03d $n'
 	fi
 	sed -i 's%NUM%\$n%' test.txt > tests.txt
         """
