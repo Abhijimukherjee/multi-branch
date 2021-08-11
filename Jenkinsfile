@@ -13,12 +13,12 @@ pipeline {
 	sh """
 	echo "NUM" > cat test.txt
 	echo $projectName
+	#!/bin/bash
 	if [ $BUILD_NUMBER -gt 999 ]
 	then
-	printf $BUILD_NUMBER | tail -c 3 
+	printf $BUILD_NUMBER | tail -c 3
 	else
-	printf "%03d" "$BUILD_NUMBER" 
-	echo "\${printf "%03d" "$BUILD_NUMBER"}"
+	printf "%03d" "$BUILD_NUMBER"
 	fi
 	#sed -i 's%NUM%\${printf "%03d" "$BUILD_NUMBER"}%' test.txt > tests.txt
         """
