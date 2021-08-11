@@ -4,13 +4,7 @@ def projectName = allJob[0];
 
 node('master'){
     stage('stage1'){
-def GIT_COMMIT_EMAIL = sh (returnStdout: true, script: '''if [ $BUILD_NUMBER -gt 999 ]
-	then
-	printf $BUILD_NUMBER | tail -c 3
-	else
-	printf "%03d" "$BUILD_NUMBER"
-	fi''').trim()
-    echo "Git committer email: ${GIT_COMMIT_EMAIL}"
+
     }
 }
 
@@ -22,7 +16,14 @@ pipeline {
 		expression { "${projectName}" == 'Finance' }
         }
       steps {
-	sh """
+	      script{
+	def GIT_COMMIT_EMAIL = sh (returnStdout: true, script: '''if [ $BUILD_NUMBER -gt 999 ]
+	then
+	printf $BUILD_NUMBER | tail -c 3
+	else
+	printf "%03d" "$BUILD_NUMBER"
+	fi''').trim()
+	echo "Git committer email: ${GIT_COMMIT_EMAIL}"
 	touch test.txt
 	echo "NUM" > test.txt
 	echo $projectName
