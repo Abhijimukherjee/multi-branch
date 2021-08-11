@@ -14,7 +14,7 @@ pipeline {
 	echo "NUM" > cat test.txt
 	echo $projectName
 	#!/bin/bash
-	n=$BUILD_NUMBER
+	set n=$BUILD_NUMBER
 	if [ $BUILD_NUMBER -gt 999 ]
 	then
 	printf $BUILD_NUMBER | tail -c 3
