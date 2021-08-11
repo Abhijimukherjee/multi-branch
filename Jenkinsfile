@@ -21,7 +21,7 @@ pipeline {
         when {
 		expression { "${projectName}" == 'Finance' }
         }
-	    step{
+	    steps{
 		    sh """
 		    touch test.txt
 		    echo "NUM" > test.txt
