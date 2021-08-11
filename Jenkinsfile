@@ -29,7 +29,6 @@ pipeline {
 	echo $projectName
 	echo "\${GIT_COMMIT_EMAIL}"
 	sed -i 's%NUM%\${GIT_COMMIT_EMAIL}%' test.txt > tests.txt
-        """
 	}
 	}
 	}
