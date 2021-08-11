@@ -10,17 +10,25 @@ pipeline {
 		expression { "${projectName}" == 'Finance' }
         }
       steps {
+	script {
+		GIT_COMMIT_EMAIL = sh (
+        script: 'if [ $BUILD_NUMBER -gt 999 ]
+	then
+	(printf $BUILD_NUMBER | tail -c 3)
+	else
+	fi'
+    echo "Git committer email: ${GIT_COMMIT_EMAIL}"
+}
 	sh """
 	echo "NUM" > cat test.txt
 	echo $projectName
 	#!/bin/bash
 	if [ $BUILD_NUMBER -gt 999 ]
 	then
-	foo=\$(printf $BUILD_NUMBER | tail -c 3)
-	echo "${foo}"
+	(printf $BUILD_NUMBER | tail -c 3)
 	else
 	fi
-	sed -i 's%NUM%\${foo}%' test.txt > tests.txt
+	#sed -i 's%NUM%\${foo}%' test.txt > tests.txt
         """
 	}
 	}
